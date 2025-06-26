@@ -1,2 +1,3 @@
-pub mod YourContract;
+pub mod DefenceToken;
+//pub mod BattleContract;
 
