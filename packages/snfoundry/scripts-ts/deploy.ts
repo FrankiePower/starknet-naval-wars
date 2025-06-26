@@ -5,6 +5,7 @@ import {
   deployer,
 } from "./deploy-contract";
 import { green } from "./helpers/colorize-log";
+import { shortString } from "starknet";
 
 /**
  * Deploy a contract using the specified parameters.
@@ -43,9 +44,12 @@ import { green } from "./helpers/colorize-log";
  */
 const deployScript = async (): Promise<void> => {
   await deployContract({
-    contract: "YourContract",
+    contract: "DefenceToken",
     constructorArgs: {
-      owner: deployer.address,
+      name: "DefenceToken",
+      symbol: "DEF",
+      fixed_supply: "10000000000000000000000000", // 10,000,000 tokens with 18 decimals
+      recipient: deployer.address, // or any address you want to receive the initial supply
     },
   });
 };
