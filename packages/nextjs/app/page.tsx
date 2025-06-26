@@ -5,7 +5,7 @@ import { ConnectedAddress } from "~~/components/ConnectedAddress";
 import React, { useState } from 'react';
 // import { Button } from '@/components/ui/button';
 // import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-// import ShipPlacement from '@/components/ShipPlacement';
+import ShipPlacement from '../components/naval-wars/ShipPlacement';
 // import GamePlay from '@/components/GamePlay';
 // import GameResult from '@/components/GameResult';
 
@@ -35,9 +35,9 @@ const Home = () => {
     setPlayerGrid([]);
   };
 
-  // if (gameState === 'placement') {
-  //   return <ShipPlacement onPlacementComplete={handlePlacementComplete} />;
-  // }
+  if (gameState === 'placement') {
+    return <ShipPlacement onPlacementComplete={handlePlacementComplete} />;
+  }
 
   // if (gameState === 'playing') {
   //   return <GamePlay playerGrid={playerGrid} onGameEnd={handleGameEnd} />;
@@ -138,10 +138,12 @@ const Home = () => {
               className="rounded-2xl shadow-xl border border-green-400 dark:border-green-500 bg-gradient-to-br from-green-100 via-green-200 to-green-300 dark:from-green-900 dark:via-green-800 dark:to-green-700 p-6 backdrop-blur-md flex flex-col items-center justify-center gap-4 flex-1 cursor-pointer select-none transition-transform hover:scale-105 focus:scale-105 active:scale-100 outline-none focus:ring-2 focus:ring-green-400"
               style={{ minHeight: '120px' }}
             >
-              <div className="flex items-center gap-2">
-                <Image src="/skull.svg" alt="Skull Logo" width={32} height={32} />
-                <span className="text-2xl font-bold text-green-800 dark:text-green-200">Enter Battle</span>
-              </div>
+              <Link href="/battle" className="w-full h-full flex flex-col items-center justify-center gap-4 flex-1 cursor-pointer select-none transition-transform hover:scale-105 focus:scale-105 active:scale-100 outline-none focus:ring-2 focus:ring-green-400 rounded-2xl shadow-xl border border-green-400 dark:border-green-500 bg-gradient-to-br from-green-100 via-green-200 to-green-300 dark:from-green-900 dark:via-green-800 dark:to-green-700 p-6 backdrop-blur-md" style={{ minHeight: '120px' }}>
+                <div className="flex items-center gap-2">
+                  <Image src="/skull.svg" alt="Skull Logo" width={32} height={32} />
+                  <span className="text-2xl font-bold text-green-800 dark:text-green-200">Enter Battle</span>
+                </div>
+              </Link>
             </div>
             <p className="text-green-800 dark:text-black-300 text-sm font-medium text-center">
               Free Strk tokens available for testing • Powered by Starknet
