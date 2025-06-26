@@ -3,11 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ConnectedAddress } from "~~/components/ConnectedAddress";
 import React, { useState } from 'react';
-// import { Button } from '@/components/ui/button';
-// import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import ShipPlacement from '../components/naval-wars/ShipPlacement';
-// import GamePlay from '@/components/GamePlay';
-// import GameResult from '@/components/GameResult';
+
 
 type GameState = 'menu' | 'placement' | 'playing' | 'result';
 
@@ -39,13 +36,6 @@ const Home = () => {
     return <ShipPlacement onPlacementComplete={handlePlacementComplete} />;
   }
 
-  // if (gameState === 'playing') {
-  //   return <GamePlay playerGrid={playerGrid} onGameEnd={handleGameEnd} />;
-  // }
-
-  // if (gameState === 'result') {
-  //   return <GameResult winner={winner} onPlayAgain={playAgain} />;
-  // }
 
   return (
     <div className="min-h-screen flex items-center justify-center p-6 bg-accent dark:bg-base-200 transition-colors duration-500">
