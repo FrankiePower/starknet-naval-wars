@@ -1,3 +1,4 @@
+
 # 🚢 Naval Wars – On-Chain Battleship on Starknet
 
 Naval Wars is a fully on-chain, single-player battleship game built on Starknet. Place your fleet, battle the CPU, and win real ERC20 token rewards. All game logic and outcomes are enforced by Cairo smart contracts for fairness and transparency.
@@ -8,6 +9,8 @@ Naval Wars is a fully on-chain, single-player battleship game built on Starknet.
 - 🧩 **Extensible Architecture:** Designed for future multiplayer, tournaments, and NFT ship skins.
 - 🔒 **Fair & Secure:** No cheating, no hidden logic—everything is on Starknet.
 
+---
+<img width="1438" alt="Screenshot 2025-06-26 at 23 16 18" src="https://github.com/user-attachments/assets/55f9ce7e-f462-4dcb-ab83-838fc2fa25ce" />
 ---
 
 ## Quick Start
