@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import ShipPlacement from "../../components/naval-wars/ShipPlacement";
 import Link from "next/link";
 import Image from "next/image";
-// import GamePlay from "../../components/GamePlay";
-// import GameResult from "../../components/GameResult";
+import GamePlay from "../../components/naval-wars/GamePlay";
+import GameResult from "../../components/naval-wars/GameResult";
 
 type GameState = "placement" | "playing" | "result";
 
@@ -35,12 +35,14 @@ const BattlePage = () => {
         {gameState === "placement" && (
           <ShipPlacement onPlacementComplete={handlePlacementComplete} />
         )}
-        {/* {gameState === "playing" && (
+       {gameState === "playing" && (
           <GamePlay playerGrid={playerGrid} onGameEnd={handleGameEnd} />
         )}
+
+         
         {gameState === "result" && (
           <GameResult winner={winner} onPlayAgain={playAgain} />
-        )} */}
+        )} 
       </div>
     </div>
   );
