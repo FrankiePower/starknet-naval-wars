@@ -7,7 +7,7 @@ interface GameResultProps {
 
 const GameResult: React.FC<GameResultProps> = ({ winner, onPlayAgain }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center p-6">
+    <div className="min-h-screen flex items-center justify-center p-6">
       <div className="card w-full max-w-md bg-slate-800 border-slate-600">
         <div className="card-body items-center text-center">
           <div className="text-6xl mb-4">
@@ -26,10 +26,10 @@ const GameResult: React.FC<GameResultProps> = ({ winner, onPlayAgain }) => {
             onClick={onPlayAgain}
             className="btn btn-primary w-full mt-6 font-bold py-3"
           >
-            ⚓ New Campaign
+            Claim Loot
           </button>
           <div className="text-slate-400 text-sm mt-3">
-            {winner === 'player' ? 'Prize Pool: 200 tBTC' : 'Better luck next battle!'}
+            {winner === 'player' ? 'Prize Pool: 200 Strk' : 'Better luck next battle!'}
           </div>
         </div>
       </div>

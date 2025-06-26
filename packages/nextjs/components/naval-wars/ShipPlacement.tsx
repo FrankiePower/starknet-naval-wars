@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useScaffoldWriteContract } from '~~/hooks/scaffold-stark/useScaffoldWriteContract';
 import 'daisyui';
 import GameBoard from '../naval-wars/GameBoard';
 
@@ -70,6 +71,31 @@ const ShipPlacement: React.FC<ShipPlacementProps> = ({ onPlacementComplete }) =>
   };
 
   const allShipsPlaced = placedShips.size === ships.length;
+
+  const { sendAsync } = useScaffoldWriteContract({
+    contractName: "BattleContract",
+    functionName: "fight_battle",
+    args: [10000],
+  });
+
+const { sendAsync: approveAsync } = useScaffoldWriteContract({
+    contractName: "DefenceToken",
+    functionName: "approve",
+    args: ["0x7fa43cd7bcf5cc2499cad8378d4081c1f1a4465f57ca02beaacda9639825804", 10000],
+});
+
+  const handleFightBattle = async () => {
+    try {
+
+        // First, approve the BattleContract to spend DefenceToken
+        const approveResult = await approveAsync();
+        console.log("approve transaction successful:", approveResult);
+      const result = await sendAsync();
+      console.log("fight_battle transaction successful:", result);
+    } catch (error) {
+      console.error("Transaction failed:", error);
+    }
+  };
 
   return (
     <div className="min-h-screen p-6">
@@ -156,12 +182,7 @@ const ShipPlacement: React.FC<ShipPlacementProps> = ({ onPlacementComplete }) =>
                 className="btn btn-success w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3"
                 onClick={async () => {
                   await onPlacementComplete(grid);
-                  // Call the fight_battle contract here
-                //   if (typeof window !== 'undefined' && window.fightBattle) {
-                //     // If you have a global or injected function
-                //     window.fightBattle();
-                //   }
-                  // Otherwise, trigger your contract call here (e.g., via a prop, context, or hook)
+                  await handleFightBattle();
                 }}
               >
                 Battle!

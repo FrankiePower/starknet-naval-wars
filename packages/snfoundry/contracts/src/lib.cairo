@@ -1,3 +1,3 @@
-pub mod DefenceToken;
-//pub mod BattleContract;
+//pub mod DefenceToken;
+pub mod BattleContract;
 
