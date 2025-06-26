@@ -116,7 +116,7 @@ const Home = () => {
                 <div>
                   <h4 className="text-green-700 dark:text-green-400 font-semibold">Gameplay:</h4>
                   <ul className="list-disc list-inside ml-4">
-                    <li>Take turns guessing opponent's ship coordinates</li>
+                    <li>Take turns guessing opponent&apos;s ship coordinates</li>
                     <li>Hits are marked with <span className="font-bold">💥</span>, misses with <span className="font-bold">💧</span></li>
                     <li>A ship is sunk when all coordinates are hit</li>
                   </ul>
