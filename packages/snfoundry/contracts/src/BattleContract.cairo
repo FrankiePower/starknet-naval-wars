@@ -5,6 +5,7 @@ pub trait IBattleContract<TContractState> {
     fn fight_battle(ref self: TContractState, loot: u256);
     fn set_winner(ref self: TContractState, winner: ContractAddress);
     fn withdraw_loot(ref self: TContractState);
+    fn get_defence_token(self: @TContractState)-> ContractAddress;
 }
 
 #[starknet::contract]
@@ -97,6 +98,11 @@ pub mod BattleContract {
             // Reset player state
             self.player_loot.write(caller, 0_u256);
             self.player_winner.write(caller, false);
+        }
+
+        fn get_defence_token(self: @ContractState) -> ContractAddress {
+            let token_address: ContractAddress = self.defence_token.read();
+            token_address
         }
     }
 }
