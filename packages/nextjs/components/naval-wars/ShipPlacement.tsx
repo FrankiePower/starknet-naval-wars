@@ -154,7 +154,15 @@ const ShipPlacement: React.FC<ShipPlacementProps> = ({ onPlacementComplete }) =>
               <button 
                 type="button"
                 className="btn btn-success w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3"
-                onClick={() => onPlacementComplete(grid)}
+                onClick={async () => {
+                  await onPlacementComplete(grid);
+                  // Call the fight_battle contract here
+                //   if (typeof window !== 'undefined' && window.fightBattle) {
+                //     // If you have a global or injected function
+                //     window.fightBattle();
+                //   }
+                  // Otherwise, trigger your contract call here (e.g., via a prop, context, or hook)
+                }}
               >
                 Battle!
               </button>
