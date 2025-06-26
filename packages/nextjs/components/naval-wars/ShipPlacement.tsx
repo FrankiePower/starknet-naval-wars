@@ -78,18 +78,8 @@ const ShipPlacement: React.FC<ShipPlacementProps> = ({ onPlacementComplete }) =>
     args: [10000],
   });
 
-const { sendAsync: approveAsync } = useScaffoldWriteContract({
-    contractName: "DefenceToken",
-    functionName: "approve",
-    args: ["0x7fa43cd7bcf5cc2499cad8378d4081c1f1a4465f57ca02beaacda9639825804", 10000],
-});
-
   const handleFightBattle = async () => {
     try {
-
-        // First, approve the BattleContract to spend DefenceToken
-        const approveResult = await approveAsync();
-        console.log("approve transaction successful:", approveResult);
       const result = await sendAsync();
       console.log("fight_battle transaction successful:", result);
     } catch (error) {

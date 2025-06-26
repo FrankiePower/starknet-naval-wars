@@ -156,7 +156,7 @@ const GamePlay: React.FC<GamePlayProps> = ({ playerGrid, onGameEnd }) => {
   }
 
   return (
-    <div className="min-h-screen  p-6">makeComputerShot
+    <div className="min-h-screen  p-6">
       <div className="max-w-7xl  mx-auto">
         <div className="text-center bg-slate-800 p-6 mb-8 rounded-lg">
           <h1 className="text-4xl font-bold text-white mb-2">⚔️ Naval Combat</h1>
