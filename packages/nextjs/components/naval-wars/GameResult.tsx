@@ -1,4 +1,5 @@
 import React from 'react';
+import { useScaffoldWriteContract } from '~~/hooks/scaffold-stark/useScaffoldWriteContract';
 
 interface GameResultProps {
   winner: 'player' | 'computer';
@@ -6,6 +7,22 @@ interface GameResultProps {
 }
 
 const GameResult: React.FC<GameResultProps> = ({ winner, onPlayAgain }) => {
+  const { sendAsync } = useScaffoldWriteContract({
+    contractName: "BattleContract",
+    functionName: "withdraw_loot",
+    args: [],
+  });
+
+  const handleClaimLoot = async () => {
+    try {
+      await sendAsync();
+      onPlayAgain(); // Optionally reset game after claiming loot
+    } catch (error) {
+      // Optionally show error notification
+      console.error("Withdraw loot failed", error);
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center p-6">
       <div className="card w-full max-w-md bg-slate-800 border-slate-600">
@@ -22,12 +39,21 @@ const GameResult: React.FC<GameResultProps> = ({ winner, onPlayAgain }) => {
               : 'The enemy has outmaneuvered your fleet. Better luck next time, Admiral.'
             }
           </p>
-          <button 
-            onClick={onPlayAgain}
-            className="btn btn-primary w-full mt-6 font-bold py-3"
-          >
-            Claim Loot
-          </button>
+          {winner === 'player' ? (
+            <button 
+              onClick={handleClaimLoot}
+              className="btn btn-success w-full mt-6 font-bold py-3"
+            >
+              Claim Loot
+            </button>
+          ) : (
+            <button 
+              onClick={onPlayAgain}
+              className="btn btn-primary w-full mt-6 font-bold py-3"
+            >
+              Play Again
+            </button>
+          )}
           <div className="text-slate-400 text-sm mt-3">
             {winner === 'player' ? 'Prize Pool: 200 Strk' : 'Better luck next battle!'}
           </div>
